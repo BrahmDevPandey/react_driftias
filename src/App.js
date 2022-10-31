@@ -1,13 +1,24 @@
-import Header from "./components/Header";
-import Homepage from "./pages/Homepage";
-import Footer from "./components/Footer";
+import About from "./components/About";
+import MyCarousel from "./components/Carousel";
+import Contact from "./components/Contact";
+import Experience from "./components/Experience";
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+import Portfolio from "./components/Portfolio";
+import SocialLinks from "./components/SocialLinks";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Homepage />
-      <Footer />
+      <NavBar />
+      <Home />
+      <MyCarousel />
+      <About />
+      <Portfolio />
+      <Experience />
+      <Contact />
+
+      <SocialLinks />
     </div>
   );
 }
