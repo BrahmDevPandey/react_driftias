@@ -1,24 +1,20 @@
-import About from "./components/About";
-import MyCarousel from "./components/Carousel";
-import Contact from "./components/Contact";
-import Experience from "./components/Experience";
-import Home from "./components/Home";
+import Img2Pdf from "./components/img2pdf/Img2Pdf";
 import NavBar from "./components/NavBar";
-import Portfolio from "./components/Portfolio";
-import SocialLinks from "./components/SocialLinks";
+import About from "./pages/About";
+import Homepage from "./pages/Homepage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <NavBar />
-      <Home />
-      <MyCarousel />
-      <About />
-      <Portfolio />
-      <Experience />
-      <Contact />
-
-      <SocialLinks />
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/img2pdf" element={<Img2Pdf />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

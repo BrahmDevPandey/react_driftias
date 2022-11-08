@@ -1,13 +1,19 @@
-import Carousel from "../components/Carousel";
-import About from "./About";
+import Experience from "../components/Experience";
+import MyCarousel from "../components/Carousel";
+import Portfolio from "../components/Portfolio";
+import SocialLinks from "../components/SocialLinks";
+import Home from "../components/Home";
+import Contact from "../components/Contact";
 
 function Homepage() {
   return (
     <div>
-      <Carousel />
-      <div className="mb-5">
-        <About />
-      </div>
+      <Home />
+      <MyCarousel />
+      <Portfolio />
+      <Experience />
+      <SocialLinks />
+      <Contact />
     </div>
   );
 }

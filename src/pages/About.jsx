@@ -1,30 +1,41 @@
-function About() {
+import React from "react";
+
+const About = () => {
   return (
-    <div id="about" className="text-center m-5">
-      <h2 className="h1-responsive font-weight-bold text-center my-4">
-        About Us
-      </h2>
-      <p>
-        The Frontend Development Bootcamp is a complete crash course, and
-        everything you need to get up and running with HTML, CSS and JavaScript.
-        By completing the coursework contained in the Bootcamp, along with
-        practice, you will be well on your way into the world of web
-        development!
-      </p>
-      <p>
-        All of our courses are taught by{" "}
-        <strong>industry leading experts</strong>, people actively shaping the
-        craft of web development. In addition, our courses are regularly updated
-        to keep pace with the latest evolutions to ensure you're learning
-        industry best practices and the latest techniques.
-      </p>
-      <p>
-        Create a free account, and get access to everything you need to learn
-        <strong> HTML</strong>, <strong>CSS</strong>,{" "}
-        <strong>JavaScript</strong>, and <strong>ReactJS!</strong>
-      </p>
+    <div
+      name="about"
+      id="#about"
+      className="w-full h-screen bg-gradient-to-b from-gray-800 to-black text-white"
+    >
+      <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
+        <div className="pb-8">
+          <p className="text-4xl font-bold inline border-b-4 border-gray-500">
+            About
+          </p>
+        </div>
+
+        <p className="text-xl mt-20">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius,
+          deserunt illum mollitia officiis qui exercitationem perferendis neque
+          quasi a recusandae necessitatibus tempora iusto! Blanditiis error
+          iste, totam fugiat recusandae rerum laborum perferendis molestiae
+          aperiam asperiores nemo. Magni dolor maxime debitis vitae, eaque hic
+          ab mollitia voluptatibus, a nostrum eveniet laborum!
+        </p>
+
+        <br />
+
+        <p className="text-xl">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+          pariatur, vel similique sint, nobis aspernatur ut praesentium
+          explicabo ipsam aliquid quasi laboriosam et culpa possimus repudiandae
+          quisquam ullam maiores ab unde. Fugiat odio mollitia nemo alias.
+          Commodi facilis atque nulla vero voluptatem explicabo. Quibusdam,
+          magni quo! Eum cupiditate debitis labore.
+        </p>
+      </div>
     </div>
   );
-}
+};
 
 export default About;
