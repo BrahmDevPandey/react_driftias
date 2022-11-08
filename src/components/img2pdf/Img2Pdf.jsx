@@ -1,6 +1,7 @@
 import React, { useState, ChangeEventHandler } from "react";
 import jsPDF from "jspdf";
 import "./img2pdf.css";
+import { useEffect } from "react";
 
 // New class with additional fields for Image
 class CustomImage extends Image {
@@ -15,7 +16,7 @@ class CustomImage extends Image {
 }
 
 // Each image is loaded and an object URL is created.
-const fileToImageURL = async (file) => {
+const fileToImageURL = (file) => {
   return new Promise((resolve, reject) => {
     const image = new CustomImage(file.type);
 
@@ -115,9 +116,29 @@ const Img2Pdf = () => {
   // State for uploaded images
   const [uploadedImages, setUploadedImages] = useState([]);
   let fileList = [];
+  let fileContainer = null;
+  useEffect(() => {
+    fileContainer = document.getElementById("file-container");
+    // for drag and drop of files
+    fileContainer.ondragover = fileContainer.ondragenter = function (event) {
+      event.preventDefault();
+    };
+  });
+
+  const handleDrop = React.useCallback(
+    (event) => {
+      event.preventDefault();
+      fileList = [...fileList, ...event.dataTransfer.files];
+      const fileArray = fileList ? Array.from(fileList) : [];
+
+      const fileToImagePromises = fileArray.map(fileToImageURL);
+      Promise.all(fileToImagePromises).then(setUploadedImages);
+    },
+    [setUploadedImages]
+  );
+
   const handleImageUpload = React.useCallback(
     (event) => {
-      console.log(event.target.files);
       fileList = [...fileList, ...event.target.files];
       const fileArray = fileList ? Array.from(fileList) : [];
 
@@ -140,10 +161,10 @@ const Img2Pdf = () => {
   }, [uploadedImages, cleanUpUploadedImages]);
 
   return (
-    <div>
+    <div onDrop={handleDrop}>
       <div className="h-20"></div>
       <div className="h1-text">Convert images to pdf</div>
-      <div className="images-container">
+      <div className="images-container" id="file-container" onDrop={handleDrop}>
         {uploadedImages.length > 0 ? (
           uploadedImages.map((img) => (
             <img
@@ -154,7 +175,7 @@ const Img2Pdf = () => {
             />
           ))
         ) : (
-          <p>Upload some images...</p>
+          <span onDrop={handleDrop}>Upload some images...</span>
         )}
       </div>
       <div className="buttons-container">
